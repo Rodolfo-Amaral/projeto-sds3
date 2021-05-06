@@ -1,40 +1,37 @@
-package com.devsuperior.dsvendas.entities;
+package com.devsuperior.dsvendas.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.devsuperior.dsvendas.entities.Vendas;
 
-@Entity
-@Table(name = "tb_vendas")
-public class Vendas {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VendasDTO {
+	
 	private Long id;
 	private Integer visitas;
 	private Integer negociado;
 	private Double qtde;
 	private LocalDate data;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_vendedor")
-	private Vendedor vendedor;
 
-	public Vendas() {	
+	private VendedorDTO vendedor;
+	
+	public VendasDTO () {
 	}
 
-	public Vendas(Long id, Integer visitas, Integer negociado, Double qtde, LocalDate data, Vendedor vendedor) {
+	public VendasDTO(Long id, Integer visitas, Integer negociado, Double qtde, LocalDate data, VendedorDTO vendedor) {
 		this.id = id;
 		this.visitas = visitas;
 		this.negociado = negociado;
 		this.qtde = qtde;
 		this.data = data;
 		this.vendedor = vendedor;
+	}
+	public VendasDTO(Vendas entity) {
+		id = entity.getId();
+		visitas = entity.getVisitas();
+		negociado = entity.getNegociado();
+		qtde = entity.getQtde();
+		data = entity.getData();
+		vendedor = new VendedorDTO(entity.getVendedor());
 	}
 
 	public Long getId() {
@@ -77,11 +74,11 @@ public class Vendas {
 		this.data = data;
 	}
 
-	public Vendedor getVendedor() {
+	public VendedorDTO getVendedor() {
 		return vendedor;
 	}
 
-	public void setVendedor(Vendedor vendedor) {
+	public void setVendedor(VendedorDTO vendedor) {
 		this.vendedor = vendedor;
 	}
 }
