@@ -20,11 +20,12 @@ public class VendasService {
 	@Autowired
 	private RepoVendas repositorio;
 	
-	private RepoVendedor repovendedor;
+	@Autowired
+	private RepoVendedor repoVendedor;
 	
 	@Transactional(readOnly = true)
 	public Page<VendasDTO> findAll(Pageable pageable){
-		repovendedor.findAll();
+		repoVendedor.findAll();
 		Page<Vendas> resultado = repositorio.findAll(pageable);
 		return resultado.map(x -> new VendasDTO(x));
 	}
