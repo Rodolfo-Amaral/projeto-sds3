@@ -17,7 +17,7 @@ type ChartData = {
 
 const BarChart = () => {
 
-    const [chartData, setChartData] = useState<ChartData>({
+    const [ChartData, setChartData] = useState<ChartData>({
         labels: {
             categories: []
         },
@@ -46,7 +46,7 @@ const BarChart = () => {
                         }
                     ]
                 });
-                console.log(chartData);
+                console.log(ChartData);
             });
     }, []);
     const options = {
@@ -59,8 +59,8 @@ const BarChart = () => {
 
     return (
         <Chart
-            options={{ ...options, xaxis: chartData.labels }}
-            series={chartData.series}
+            options={{ ...options, xaxis: ChartData.labels }}
+            series={ChartData.series}
             type="bar"
             height="240"
         />
