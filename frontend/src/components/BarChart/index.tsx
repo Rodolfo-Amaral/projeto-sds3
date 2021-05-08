@@ -46,9 +46,8 @@ const BarChart = () => {
                         }
                     ]
                 });
-                console.log(ChartData);
             });
-    });
+    }, []);
     const options = {
         plotOptions: {
             bar: {
