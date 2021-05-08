@@ -14,7 +14,7 @@ function Dashboard() {
                 <div className="row px-3">
                     <div className="col-sm-6"/*para usar 6 partes do grafico*/>
                         <h5 className="text-center text-secondary">
-                            Taxa de Sucesso (%)
+                            Taxa de Conversão (%)
             </h5>
                         <BarChart />
                     </div>
